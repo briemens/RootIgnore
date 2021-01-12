@@ -38,7 +38,7 @@ function! s:WildignoreFromGitignore(gitpath, isAtRoot)
         if line =~ '/$' 
           let igstring .= "," . line . "*"
         else
-          let igstring .= "," . line
+          let igstring .= ",\"" . line . "\""
         endif
       else
         let fullPath = a:gitpath . "/" . line
@@ -52,7 +52,7 @@ function! s:WildignoreFromGitignore(gitpath, isAtRoot)
             let igstring .= "," . pattern
           endif
         else
-          let igstring .= "," . line
+          let igstring .= ",\"" . line . "\"""
         endif
       endif
 
